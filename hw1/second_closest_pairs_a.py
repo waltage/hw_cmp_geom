@@ -1,15 +1,12 @@
 #!/opt/homebrew/bin/python3
 from __future__ import annotations
 
-from helpers import Point
 from helpers import PointPair
 from helpers import PointList
 from helpers import PointPairList
 
 from helpers import generate_points_unique_distances
-from helpers import distance
 
-import typing
 import math
 
 

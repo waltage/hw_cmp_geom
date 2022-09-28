@@ -4,10 +4,8 @@ from helpers import PointList
 from helpers import PointPairList
 
 from helpers import generate_points
-from helpers import distance
 
 import typing
-import math
 
 SingleResult = typing.Tuple[float, PointPair]
 

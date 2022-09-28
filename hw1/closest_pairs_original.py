@@ -3,10 +3,8 @@ from helpers import PointPair
 from helpers import PointList
 
 from helpers import generate_points
-from helpers import distance
 
 import typing
-import math
 
 SingleResult = typing.Tuple[float, PointPair]
 
@@ -80,6 +78,7 @@ def div_conq_closest_pair(
       this_pair = PointPair(filtered_y[i], filtered_y[j])
       if this_pair.dist < delta:
         closest = this_pair
+        delta = this_pair.dist
 
   return closest
 
