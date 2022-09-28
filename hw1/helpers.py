@@ -1,9 +1,17 @@
 from __future__ import annotations
+
+import math
 import numpy as np
 
 from typing import List
 from typing import Set
 from typing import Tuple
+
+
+def distance(p1: Point, p2: Point) -> float:
+  """distance is a euclidean distance between two Point types."""
+  return ((p1.x - p2.x)**2 + (p1.y - p2.y)**2)**(1 / 2)
+
 
 class Point:
   """Point is a container for hashable (x, y) coords."""
