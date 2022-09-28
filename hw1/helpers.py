@@ -5,7 +5,6 @@ import numpy as np
 
 from typing import List
 from typing import Set
-from typing import Tuple
 
 
 def distance(p1: Point, p2: Point) -> float:
@@ -34,6 +33,8 @@ class Point:
 
 
 class PointPair:
+  """PointPair is a hashable container for two points (with invariant)."""
+
   def __init__(self, p1: Point, p2: Point):
     if not p1 or not p2:
       self.dist = math.inf
