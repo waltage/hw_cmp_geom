@@ -83,7 +83,24 @@ def generate_points(n: int, disperse: int = 2) -> PointList:
     points.add(p)
   return [_ for _ in points]
 
+def remove_duplicate_distance(point_list: PointList):
+  def check(pl):
+    result = set()
+    for i in range(len(pl) - 1):
+      for j in range(i + 1, len(pl)):
+        d = distance(pl[i], pl[j])
+        if d in result:
+          pl.pop(j)
+          return True
+        else:
+          result.add(d)
+    return False
 
-def distance(p1: Point, p2: Point) -> float:
-  """distance is a euclidean distance between two Point types."""
-  return ((p1.x - p2.x)**2 + (p1.y - p2.y)**2)**(1 / 2)
+  had_removed = True
+  while had_removed:
+    had_removed = check(point_list)
+
+def generate_points_unique_distances(n: int, disperse: int = 2) -> PointList:
+  pts = generate_points(n, disperse)
+  remove_duplicate_distance(pts)
+  return pts
