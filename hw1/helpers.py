@@ -32,10 +32,47 @@ class Point:
   def __hash__(self):
     return hash((self.x, self.y))
 
+class PointPair:
+  def __init__(self, p1: Point, p2: Point):
+    if not p1 or not p2:
+      self.dist = math.inf
+      self.p1 = p1
+      self.p2 = p2
+      return
 
+    self.dist = distance(p1, p2)
+    if p1.x < p2.x:
+      self.p1 = p1
+      self.p2 = p2
+    elif p1.x > p2.x:
+      self.p1 = p2
+      self.p2 = p1
+    else:
+      if p1.y < p2.y:
+        self.p1 = p1
+        self.p2 = p2
+      else:
+        self.p1 = p2
+        self.p2 = p1
+
+  def __repr__(self):
+    return "Pair< d={:5.3f} ({:4},{:4}) ({:4},{:4})>".format(
+      self.dist,
+      self.p1.x,
+      self.p1.y,
+      self.p2.x,
+      self.p2.y
+    )
+  
+  def __hash__(self):
+    return hash((self.p1, self.p2))
+
+  def __eq__(self, other: PointPair):
+    return self.p1 == other.p1 and self.p2 == other.p2
+      
 # Typedefs
 PointList = List[Point]
-PointPair = Tuple[Point, Point]
+PointPairList = List[PointPair]
 
 def generate_points(n: int, disperse: int = 2) -> PointList:
   """generate_points produces a random sample of n integer coordinates."""
