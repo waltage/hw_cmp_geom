@@ -1,7 +1,7 @@
 from __future__ import annotations
 import numpy as np
 
-from typing import List, final
+from typing import List
 from typing import Set
 from typing import Tuple
 
