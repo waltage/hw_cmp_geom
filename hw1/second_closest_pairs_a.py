@@ -18,7 +18,7 @@ def update_if_closer(test_pair: PointPair, closest: PointPairList) -> PointPairL
     if test_pair.dist < _.dist:
       closest.append(test_pair)
       closest = list(set(closest))
-      closest.sort(key = lambda x: x.dist)
+      closest.sort(key=lambda x: x.dist)
       return closest[:2]
   return closest[:2]
 
@@ -40,14 +40,14 @@ def brute_force_two(point_list: PointList, left_idx: int, right_idx: int) -> Poi
 
 
 def div_conq_two_closest(
-    x_srt_points: PointList,
-    y_srt_points: PointList,
-    left: int,
-    right: int,
-    depth: int = 0) -> PointPairList:
+        x_srt_points: PointList,
+        y_srt_points: PointList,
+        left: int,
+        right: int,
+        depth: int = 0) -> PointPairList:
   if right - left < 4:
     return brute_force_two(x_srt_points, left, right)
-  
+
   mid = (left + right) // 2
   x_midpoint = x_srt_points[mid].x
 
@@ -98,8 +98,9 @@ def div_conq_two_closest(
       p2 = filtered_y[j]
       this_pair = PointPair(p1, p2)
       merged = update_if_closer(this_pair, merged)
-  
+
   return merged
+
 
 def closest_two_pairs(point_list: PointList) -> PointPairList:
   x_sorted = sorted(point_list, key=lambda x: x.x)
@@ -114,7 +115,8 @@ def closest_two_pairs(point_list: PointList) -> PointPairList:
 
 
 if __name__ == "__main__":
-  pts = generate_points_unique_distances(50, 1)
+  pts = generate_points_unique_distances(200, 5)
+  print("ready")
 
   print("\nClosest:")
   results = closest_two_pairs(pts)
@@ -125,4 +127,3 @@ if __name__ == "__main__":
   results = brute_force_two(pts, 0, len(pts) - 1)
   print(results[0])
   print(results[1])
-  

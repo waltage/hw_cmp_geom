@@ -32,6 +32,7 @@ class Point:
   def __hash__(self):
     return hash((self.x, self.y))
 
+
 class PointPair:
   def __init__(self, p1: Point, p2: Point):
     if not p1 or not p2:
@@ -63,16 +64,18 @@ class PointPair:
       self.p2.x,
       self.p2.y
     )
-  
+
   def __hash__(self):
     return hash((self.p1, self.p2))
 
   def __eq__(self, other: PointPair):
     return self.p1 == other.p1 and self.p2 == other.p2
-      
+
+
 # Typedefs
 PointList = List[Point]
 PointPairList = List[PointPair]
+
 
 def generate_points(n: int, disperse: int = 2) -> PointList:
   """generate_points produces a random sample of n integer coordinates."""
@@ -82,6 +85,7 @@ def generate_points(n: int, disperse: int = 2) -> PointList:
     p = Point(_[0], _[1])
     points.add(p)
   return [_ for _ in points]
+
 
 def remove_duplicate_distance(point_list: PointList):
   def check(pl):
@@ -99,6 +103,7 @@ def remove_duplicate_distance(point_list: PointList):
   had_removed = True
   while had_removed:
     had_removed = check(point_list)
+
 
 def generate_points_unique_distances(n: int, disperse: int = 2) -> PointList:
   pts = generate_points(n, disperse)
