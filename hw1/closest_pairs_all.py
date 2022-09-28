@@ -25,7 +25,7 @@ def brute_force(point_list: PointList, left_idx: int, right_idx: int) -> PointPa
         closest_pairs = [this_pair,]
       elif this_pair.dist == closest_pairs[0].dist:
         closest_pairs.append(this_pair)
-  # print (" ".join(["{:8.4f}".format(_.dist) for _ in closest_pairs]))
+  
   return closest_pairs
 
 
